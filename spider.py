@@ -16,7 +16,7 @@ class Spider:
         self.url = random.choice(self.urls)
         self.list_of_attributes = list()
         self.crawl()
-        self.upade_set()
+        self.update_set()
 
     def crawl(self):
 
@@ -30,7 +30,7 @@ class Spider:
         project_purpose = driver.find_element_by_xpath('//form/div/div[3]/div/div[1]/table[@class="table"]/tbody/tr[5]/td[2]')
         project_size = driver.find_element_by_xpath('//form/div/div[3]/div/div[1]/table[@class="table"]/tbody/tr[6]/td[2]')
         project_duration = driver.find_element_by_xpath('//form/div/div[3]/div/div[1]/table[@class="table"]/tbody/tr[7]/td[2]')
-        project_APR = driver.find_element_by_xpath('//form/div/div[3]/div/div[1]/table[@class="table"]/tbody/tr[8]/td[2]')
+        project_apr = driver.find_element_by_xpath('//form/div/div[3]/div/div[1]/table[@class="table"]/tbody/tr[8]/td[2]')
         project_repay_start = driver.find_element_by_xpath('//form/div/div[3]/div/div[1]/table[@class="table"]/tbody/tr[9]/td[2]')
         project_repay_method = driver.find_element_by_xpath('//form/div/div[3]/div/div[1]/table[@class="table"]/tbody/tr[10]/td[2]')
         project_repay_details = driver.find_element_by_xpath('//form/div/div[3]/div/div[1]/table[@class="table"]/tbody/tr[11]/td[2]')
@@ -45,13 +45,13 @@ class Spider:
         project_borrower_type = driver.find_element_by_xpath('//form/div/div[3]/div/div[1]/table[@class="table"]/tbody/tr[20]/td[2]')
 
         self.list_of_attributes = [project_name.text, project_number.text, project_intro.text, project_link.text, project_purpose.text, project_size.text,
-                                   project_duration.text, project_APR.text, project_repay_start.text, project_repay_method.text, project_repay_details.text,
+                                   project_duration.text, project_apr.text, project_repay_start.text, project_repay_method.text, project_repay_details.text,
                                    project_status.text, project_raise_start.text, project_guarantee.text, project_repay_source, project_risk.text,
                                    project_expense.text, project_template_number.text, project_lender_notice.text, project_borrower_type.text]
 
         return self.list_of_attributes
 
-    def upade_set(self):
+    def update_set(self):
         self.urls.remove(self.url)
         return self.urls
 

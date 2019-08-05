@@ -1,46 +1,20 @@
-import os
+from numpy import *
 
 
-# Create queue and crawled files (if not created)
-def create_data_files(project_name, base_url):
-    queue = project_name + '/queue.txt'
-    crawled = project_name + '/crawled.txt'
-    if not os.path.isfile(queue):
-        write_file(queue, base_url)
-    if not os.path.isfile(crawled):
-        write_file(crawled, '')
+def create_data_csv(project_name):
+    csv_name = project_name + ".csv"
+    with open(csv_name, "w"):
+        pass
 
 
-# Create a new file
-def write_file(path, data):
-    f = open(path, 'w')
-    f.write(data)
-    f.close()
+def create_urls_set(url_part_1, n, url_part_2):
+    iterator_array_num = arange(n)
+    iterator_array_str = array2string(iterator_array_num)
+    url_part_1_array = repeat(url_part_1, n)
+    url_part_2_array = repeat(url_part_2, n)
+    urls_array = url_part_1_array + iterator_array_str + url_part_2_array
+    return urls_array
 
 
-# Add data onto an existing file
-def append_to_file(path, data):
-    with open(path, 'a') as file:
-        file.write(data + '\n')
-
-
-# Delete the contents of a file
-def delete_file_contents(path):
-    with open(path, 'w'):
-        pass  # do nothing
-
-
-# Read a file and convert each line to set items
-def file_to_set(file_name):
-    results = set()
-    with open(file_name, 'rt') as f:
-        for line in f:
-            results.add(line.replace('\n', ''))
-    return results
-
-
-# Iterate through a set, each item will be a new line in the file
-def set_to_file(links, file):
-    delete_file_contents(file)
-    for link in sorted(links):
-        append_to_file(file, link)
+ccc = create_urls_set("aaa", 10, "bbb")
+print(ccc)
