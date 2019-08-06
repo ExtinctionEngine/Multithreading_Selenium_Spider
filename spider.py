@@ -1,19 +1,13 @@
 from selenium import webdriver
-import random
 from housekeeping import *
 from urlpool import *
 
 
 class Spider:
 
-    # Class variables shared among all instances
-    baseurl_1 = ''
-    baseurl_2 = ''
-
-    def __init__(self, project_name, baseurl_1, initial_num, i, baseurl_2):
-        self.project_name = project_name
-        self.urls = UrlsPool(baseurl_1, initial_num, i, baseurl_2)
-        self.url = random.choice(self.urls)
+    def __init__(self, spider_name, url_part_1, initial_num, iterator, url_part_2=''):
+        self.spider_name = spider_name
+        self.url = url_part_1 + str(initial_num + iterator) + url_part_2
         self.list_of_attributes = list()
         self.crawl()
         self.update_set()
@@ -51,9 +45,6 @@ class Spider:
 
         return self.list_of_attributes
 
-    def update_set(self):
-        self.urls.remove(self.url)
-        return self.urls
 
 
 

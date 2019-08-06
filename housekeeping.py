@@ -1,6 +1,3 @@
-from numpy import *
-import map
-
 
 def create_data_csv(project_name):
     csv_name = project_name + ".csv"
@@ -8,16 +5,7 @@ def create_data_csv(project_name):
         pass
 
 
-def create_urls_set(url_part_1, n, url_part_2):
-    iterator_array_num = set(range(n))
-    iterator_array_str = iterator_array_num.astype(str)
-    url_part_1_array = repeat(url_part_1, n)
-    url_part_2_array = repeat(url_part_2, n)
-    urls_array = url_part_1_array + iterator_array_str + url_part_2_array
-    return urls_array
-
-
-aaa = range(10)
-print(aaa)
-print(type(aaa))
+def create_iterator_set(n):
+    iterator_set = set(range(n))
+    return iterator_set
 
