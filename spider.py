@@ -10,7 +10,6 @@ class Spider:
         self.url = url_part_1 + str(initial_num + iterator) + url_part_2
         self.list_of_attributes = list()
         self.crawl()
-        self.update_set()
 
     def crawl(self):
 

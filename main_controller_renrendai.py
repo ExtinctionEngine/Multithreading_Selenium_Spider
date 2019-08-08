@@ -18,6 +18,7 @@ NUMBER_OF_SPIDERS = 12
 queue = Queue()
 
 create_data_csv(PROJECT_NAME)
+set_csv_header(PROJECT_NAME, PROJECT_CSV_HEADER)
 iterator_set = create_iterator_set(PROJECT_MAX_PAGES)
 
 
@@ -32,7 +33,9 @@ def work():
     while True:
         iterator = queue.get()  # when get() is proceed, it blocks and waits until queue has something to return
         record = spider.Spider(threading.current_thread().name, PROJECT_URL_1, PROJECT_INITIAL_NUM, iterator, PROJECT_URL_2)
-
+        with open(PROJECT_NAME + '.csv', 'a') as table:
+            csv_writer = csv.writer(table, dialect='excel')
+            csv_writer.writerow(record)
         iterator_set.remove(iterator)
         queue.task_done()
 
@@ -49,3 +52,7 @@ def checker():
     if len(queued_iterator) > 0:
         print(str(len(queued_iterator)) + ' urls in the queue')
         create_jobs()
+
+
+create_spiders()
+checker()
