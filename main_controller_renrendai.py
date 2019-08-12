@@ -54,5 +54,7 @@ def checker():
         create_jobs()
 
 
-create_spiders()
-checker()
+# create_spiders()
+# checker()
+
+spider.Spider('spider 1', PROJECT_URL_1, PROJECT_INITIAL_NUM, PROJECT_MAX_PAGES, PROJECT_URL_2)
