@@ -33,7 +33,7 @@ def work():
         iterator = queue.get()  # when get() is proceed, it blocks and waits until queue has something to return
         record = spider.Spider(threading.current_thread().name, PROJECT_URL_1, PROJECT_INITIAL_NUM, iterator, PROJECT_URL_2)
         with open(PROJECT_NAME + '.csv', 'a', encoding="utf-8") as table:
-            csv_writer = csv.writer(table, dialect='excel')
+            csv_writer = csv.writer(table, delimiter='\t')
             csv_writer.writerow(record.get_list())
         iterator_set.remove(iterator)
         queue.task_done()
