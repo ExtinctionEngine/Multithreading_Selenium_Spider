@@ -1,2 +1,3 @@
-for i in range(1, 11):
-    print(i)
+x = 1
+y = 3
+print(x, 'is not equal to', y)
